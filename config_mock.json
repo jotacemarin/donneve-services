@@ -1,0 +1,38 @@
+{
+  "service": {
+    "name": "donneve-services"
+  },
+  "provider": {
+    "name": "aws",
+    "runtime": "nodejs14.x",
+    "stage": "",
+    "region": "",
+    "environment": {
+      "REDIS_HOST": "",
+      "REDIS_PORT": "",
+      "REDIS_PASSWORD": "",
+      "FILESMANAGER_API": "",
+      "FILESMANAGER_API_KEY": ""
+    }
+  },
+  "functions": [
+    {
+      "setWebhook": {
+        "name": "create-code",
+        "handler": "handler.createCode",
+        "memorySize": 128,
+        "timeout": 30,
+        "reservedConcurrency": 20,
+        "events": [
+          {
+            "http": {
+              "path": "/createCode",
+              "method": "POST",
+              "cors": true
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
