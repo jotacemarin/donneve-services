@@ -1,0 +1,29 @@
+plugins:
+  - serverless-apigw-binary
+
+custom:
+  secrets: ${file(./config.json)}
+  apigwBinary:
+    types:
+      - "multipart/form-data"
+
+service: ${self:custom.secrets.service.name}
+
+frameworkVersion: "2"
+
+provider:
+  name: ${self:custom.secrets.provider.name}
+  runtime: ${self:custom.secrets.provider.runtime}
+  lambdaHashingVersion: 20201221
+  stage: ${opt:stage, 'dev'}
+  profile: botnorrea
+  region: ${self:custom.secrets.provider.region}
+  environment:
+    REDIS_HOST: ${self:custom.secrets.provider.environment.REDIS_HOST}
+    REDIS_PORT: ${self:custom.secrets.provider.environment.REDIS_PORT}
+    REDIS_PASSWORD: ${self:custom.secrets.provider.environment.REDIS_PASSWORD}
+    FILESMANAGER_API: ${self:custom.secrets.provider.environment.FILESMANAGER_API}
+    FILESMANAGER_API_KEY: ${self:custom.secrets.provider.environment.FILESMANAGER_API_KEY}
+    ACTIVE_UPLOAD: ${self:custom.secrets.provider.environment.ACTIVE_UPLOAD}
+
+functions: ${self:custom.secrets.functions}

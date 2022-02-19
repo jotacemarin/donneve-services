@@ -1,0 +1,75 @@
+{
+  "service": {
+    "name": "donneve-services"
+  },
+  "provider": {
+    "name": "aws",
+    "runtime": "nodejs14.x",
+    "stage": "",
+    "region": "",
+    "environment": {
+      "REDIS_HOST": "",
+      "REDIS_PORT": "",
+      "REDIS_PASSWORD": "",
+      "FILESMANAGER_API": "",
+      "FILESMANAGER_API_KEY": "",
+      "ACTIVE_UPLOAD": false
+    }
+  },
+  "functions": [
+    {
+      "createCode": {
+        "name": "createCode",
+        "handler": "handler.createCode",
+        "memorySize": 128,
+        "timeout": 30,
+        "reservedConcurrency": 20,
+        "events": [
+          {
+            "http": {
+              "path": "/createCode",
+              "method": "POST",
+              "cors": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "uploadMedia": {
+        "name": "uploadMedia",
+        "handler": "handler.uploadMedia",
+        "memorySize": 128,
+        "timeout": 60,
+        "reservedConcurrency": 20,
+        "events": [
+          {
+            "http": {
+              "path": "/uploadMedia",
+              "method": "POST",
+              "cors": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "setTags": {
+        "name": "setTags",
+        "handler": "handler.setTags",
+        "memorySize": 128,
+        "timeout": 30,
+        "reservedConcurrency": 20,
+        "events": [
+          {
+            "http": {
+              "path": "/setTags",
+              "method": "POST",
+              "cors": true
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
