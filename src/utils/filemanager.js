@@ -22,9 +22,12 @@ const buildTags = (tags = [], label = "tags") => {
 };
 
 const getRandom = async () => {
+  const categories = ["image", "video"]
+    .map((category) => `category=${category}`)
+    .join("&");
   const {
     data: { webContentUrl, tags },
-  } = await filesManager.get("/Files/random?category=image");
+  } = await filesManager.get(`/Files/random?${categories}`);
   const stringTags = buildTags(tags);
   return `${webContentUrl}${stringTags}`;
 };

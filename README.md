@@ -1,5 +1,8 @@
 # donneve-services
 
+## nodejs version
+  * 14.16.1
+
 ## dependencies
   * aws-multipart-parser
   * axios

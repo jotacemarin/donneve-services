@@ -15,7 +15,6 @@ const createCode = async (event, context, callback) => {
 
   try {
     const { body: bodyString } = event;
-    console.log(bodyString)
     const { from } = stringToJSON(bodyString);
 
     const code = randomNumber();

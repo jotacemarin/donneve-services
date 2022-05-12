@@ -13,7 +13,8 @@
       "REDIS_PASSWORD": "",
       "FILESMANAGER_API": "",
       "FILESMANAGER_API_KEY": "",
-      "ACTIVE_UPLOAD": false
+      "ACTIVE_UPLOAD": false,
+      "BOTNORREA_API": ""
     }
   },
   "functions": [
@@ -67,6 +68,27 @@
               "method": "POST",
               "cors": true
             }
+          }
+        ]
+      }
+    },
+    {
+      "dailyImage": {
+        "name": "dailyImage",
+        "handler": "handler.dailyImage",
+        "memorySize": 128,
+        "timeout": 30,
+        "reservedConcurrency": 20,
+        "events": [
+          {
+            "http": {
+              "path": "/dailyImage",
+              "method": "POST",
+              "cors": true
+            }
+          },
+          {
+            "schedule": "cron(0 7 * * ? *)"
           }
         ]
       }
