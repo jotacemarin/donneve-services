@@ -9,7 +9,7 @@ custom:
 
 service: ${self:custom.secrets.service.name}
 
-frameworkVersion: "2"
+frameworkVersion: "3"
 
 provider:
   name: ${self:custom.secrets.provider.name}
@@ -24,5 +24,7 @@ provider:
     REDIS_PASSWORD: ${self:custom.secrets.provider.environment.REDIS_PASSWORD}
     FILESMANAGER_API: ${self:custom.secrets.provider.environment.FILESMANAGER_API}
     FILESMANAGER_API_KEY: ${self:custom.secrets.provider.environment.FILESMANAGER_API_KEY}
+    ACTIVE_UPLOAD: ${self:custom.secrets.provider.environment.ACTIVE_UPLOAD}
+    BOTNORREA_API: ${self:custom.secrets.provider.environment.BOTNORREA_API}
 
 functions: ${self:custom.secrets.functions}

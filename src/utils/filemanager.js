@@ -22,9 +22,12 @@ const buildTags = (tags = [], label = "tags") => {
 };
 
 const getRandom = async () => {
+  const categories = ["image", "video"]
+    .map((category) => `category=${category}`)
+    .join("&");
   const {
     data: { webContentUrl, tags },
-  } = await filesManager.get("/Files/random?category=image");
+  } = await filesManager.get(`/Files/random?${categories}`);
   const stringTags = buildTags(tags);
   return `${webContentUrl}${stringTags}`;
 };
@@ -50,18 +53,20 @@ const setTags = async (webContentUrl = "", tags = []) => {
 };
 
 const uploadFile = async (formData) => {
+  const headers = { "Content-Type": `multipart/form-data` };
   const {
     data: { remoteId },
-  } = await filesManager.post(formData);
+  } = await filesManager.post("/Files/upload", formData, { headers });
   return remoteId;
 };
 
-const gdl = remoteId => `https://drive.google.com/uc?id=${remoteId}&export=download`;
+const gdl = (remoteId) =>
+  `https://drive.google.com/uc?id=${remoteId}&export=download`;
 
 module.exports = {
   getRandom,
   searchByTags,
   setTags,
   uploadFile,
-  gdl
+  gdl,
 };

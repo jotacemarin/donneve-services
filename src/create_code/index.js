@@ -1,6 +1,10 @@
 "use strict";
 
-const { createResponse, createErrorResponse } = require("../utils/parser");
+const {
+  stringToJSON,
+  createResponse,
+  createErrorResponse,
+} = require("../utils/parser");
 const { setKey } = require("../utils/redis");
 
 const randomNumber = (min = 100000, max = 999999) =>

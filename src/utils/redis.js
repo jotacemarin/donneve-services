@@ -13,7 +13,7 @@ const getClient = async () =>
     password: REDIS_PASSWORD,
   });
 
-const setKey = async (key, value, ttl = 120) => {
+const setKey = async (key, value, ttl = 300) => {
   const client = await getClient();
   await client.connect();
   await client.set(key, value);

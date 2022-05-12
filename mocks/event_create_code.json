@@ -1,7 +1,5 @@
 {
-  "body": {
-    "from": "1346557085"
-  },
+  "body": "{ \"from\": \"1346557085\" }",
   "queryStringParameters": {
     "code": "123456"
   },
