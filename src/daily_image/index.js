@@ -8,7 +8,8 @@ const dailyImage = async (_event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
 
   try {
-    const message = await getRandom();
+    const image = await getRandom();
+    const message = `Bonotrrea daily image:\n\n${image}`
     const { status } = await publicWebhook({ message });
     return callback(null, createResponse({ message, botnorrea: { status } }));
   } catch (error) {
