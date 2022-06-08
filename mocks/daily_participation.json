@@ -1,0 +1,9 @@
+{
+  "body": "{ \"from\": \"1346557085\" }",
+  "queryStringParameters": {
+    "code": "123456"
+  },
+  "pathParameters": {
+    "id": "616a73bc8d9b45a88c6ae970"
+  }
+}

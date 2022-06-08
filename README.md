@@ -26,6 +26,8 @@
   * `POST` - https://j6a2fj9qc6.execute-api.us-east-2.amazonaws.com/prod/createCode
   * `POST` - https://j6a2fj9qc6.execute-api.us-east-2.amazonaws.com/prod/uploadMedia
   * `POST` - https://j6a2fj9qc6.execute-api.us-east-2.amazonaws.com/prod/setTags
+  * `POST` - https://j6a2fj9qc6.execute-api.us-east-2.amazonaws.com/prod/dailyImage
+  * `GET` - https://j6a2fj9qc6.execute-api.us-east-2.amazonaws.com/prod/dailyParticipation
 ## functions:
   * createCode: createCode
   * uploadMedia: uploadMedia
