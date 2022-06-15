@@ -18,7 +18,8 @@
       "TELEGRAM_TOKEN": "",
       "MONGO_USER": "",
       "MONGO_PASSWORD": "",
-      "MONGO_DATABASE": ""
+      "MONGO_DATABASE": "",
+      "MAIN_CHAT": ""
     }
   },
   "functions": [
@@ -114,6 +115,24 @@
           },
           {
             "schedule": "cron(0 9 * * ? *)"
+          }
+        ]
+      }
+    },
+    {
+      "telegramAuth": {
+        "name": "telegramAuth",
+        "handler": "handler.telegramAuth",
+        "memorySize": 128,
+        "timeout": 60,
+        "reservedConcurrency": 20,
+        "events": [
+          {
+            "http": {
+              "path": "/telegramAuth",
+              "method": "GET",
+              "cors": true
+            }
           }
         ]
       }

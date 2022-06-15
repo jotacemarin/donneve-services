@@ -3,6 +3,7 @@
     "deploy": "sls deploy --stage prod --verbose",
     "createCode": "sls invoke local -f createCode -p mocks/event_create_code.json --stage prod",
     "uploadMedia": "sls invoke local -f uploadMedia -p mocks/event_upload_media.json --stage prod",
+    "telegramAuth": "sls invoke local -f telegramAuth -p mocks/event_telegram_auth.json --stage prod",
     "dailyImage": "sls invoke local -f dailyImage --stage prod",
     "dailyParticipation": "sls invoke local -f dailyParticipation --stage prod"
   },

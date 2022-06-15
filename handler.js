@@ -6,6 +6,7 @@ const {
   setTags,
   dailyImage,
   dailyParticipation,
+  telegramAuth,
 } = require("./src");
 
 module.exports = {
@@ -14,4 +15,5 @@ module.exports = {
   setTags,
   dailyImage,
   dailyParticipation,
+  telegramAuth,
 };

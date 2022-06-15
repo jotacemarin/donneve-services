@@ -30,5 +30,6 @@ provider:
     MONGO_USER: ${self:custom.secrets.provider.environment.MONGO_USER}
     MONGO_PASSWORD: ${self:custom.secrets.provider.environment.MONGO_PASSWORD}
     MONGO_DATABASE: ${self:custom.secrets.provider.environment.MONGO_DATABASE}
+    MAIN_CHAT: ${self:custom.secrets.provider.environment.MAIN_CHAT}
 
 functions: ${self:custom.secrets.functions}

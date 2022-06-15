@@ -33,9 +33,9 @@ const dailyParticipation = async (_event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
 
   try {
-    const $match = {};
-
     await connect();
+
+    const $match = {};
     const [{ total: participation }] = await userModel
       .aggregate([
         { $match },
@@ -54,7 +54,6 @@ const dailyParticipation = async (_event, context, callback) => {
       .sort({ score: -1 })
       .limit(5)
       .exec();
-
     const topFiveSanitized = topFive.map(sanitizeObject);
     const onlyTopFive = topFiveSanitized
       .map(({ score }) => score)
@@ -63,7 +62,7 @@ const dailyParticipation = async (_event, context, callback) => {
       .map(calculatePercent(participation, onlyTopFive))
       .map(stringBuilder);
 
-    const message = `Bonotrrea top 5 sapometro:\n\n${topFiveParticipation.join("\n")}`;
+    const message = `Botnorrea top 5 sapometro:\n\n${topFiveParticipation.join("\n")}`;
     const { status } = await publicWebhook({ message });
     return callback(null, createResponse({ message, botnorrea: { status } }));
   } catch (error) {
