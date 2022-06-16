@@ -19,6 +19,7 @@ provider:
   profile: botnorrea
   region: ${self:custom.secrets.provider.region}
   environment:
+    BOT_NAME: ${self:custom.secrets.provider.environment.BOT_NAME}
     REDIS_HOST: ${self:custom.secrets.provider.environment.REDIS_HOST}
     REDIS_PORT: ${self:custom.secrets.provider.environment.REDIS_PORT}
     REDIS_PASSWORD: ${self:custom.secrets.provider.environment.REDIS_PASSWORD}

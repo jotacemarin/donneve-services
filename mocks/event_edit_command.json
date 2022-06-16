@@ -1,0 +1,6 @@
+{
+  "body": "{ \"value\": true }",
+  "pathParameters": {
+    "command": "comandos"
+  }
+}

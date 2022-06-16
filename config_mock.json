@@ -8,6 +8,7 @@
     "stage": "",
     "region": "",
     "environment": {
+      "BOT_NAME": "",
       "REDIS_HOST": "",
       "REDIS_PORT": "",
       "REDIS_PASSWORD": "",
@@ -132,6 +133,74 @@
               "path": "/telegramAuth",
               "method": "GET",
               "cors": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "commands": {
+        "name": "commands",
+        "handler": "handler.commands",
+        "memorySize": 128,
+        "timeout": 60,
+        "reservedConcurrency": 20,
+        "events": [
+          {
+            "http": {
+              "path": "/commands",
+              "method": "GET",
+              "cors": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "getCommand": {
+        "name": "getCommand",
+        "handler": "handler.getCommand",
+        "memorySize": 128,
+        "timeout": 60,
+        "reservedConcurrency": 20,
+        "events": [
+          {
+            "http": {
+              "path": "/getCommand/{command}",
+              "method": "GET",
+              "cors": true,
+              "request": {
+                "parameters": {
+                  "paths": {
+                    "command": true
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "editCommand": {
+        "name": "editCommand",
+        "handler": "handler.editCommand",
+        "memorySize": 128,
+        "timeout": 60,
+        "reservedConcurrency": 20,
+        "events": [
+          {
+            "http": {
+              "path": "/editCommand/{command}",
+              "method": "POST",
+              "cors": true,
+              "request": {
+                "parameters": {
+                  "paths": {
+                    "command": true
+                  }
+                }
+              }
             }
           }
         ]

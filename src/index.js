@@ -6,6 +6,9 @@ const { setTags } = require("./set_tags");
 const { dailyImage } = require("./daily_image");
 const { dailyParticipation } = require("./daily_participation");
 const { telegramAuth } = require("./telegram_auth");
+const { commands } = require("./commands");
+const { getCommand } = require("./get_command");
+const { editCommand } = require("./edit_command");
 
 module.exports = {
   createCode,
@@ -14,4 +17,7 @@ module.exports = {
   dailyImage,
   dailyParticipation,
   telegramAuth,
+  commands,
+  getCommand,
+  editCommand,
 };

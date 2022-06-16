@@ -13,13 +13,15 @@ const getClient = async () =>
     password: REDIS_PASSWORD,
   });
 
-const setKey = async (key, value, ttl = 300) => {
-  const client = await getClient();
-  await client.connect();
-  await client.set(key, value);
-  await client.expire(key, ttl);
-  await client.quit();
-};
+  const setKey = async (key, value, ttl = 300) => {
+    const client = await getClient();
+    await client.connect();
+    await client.set(key, value);
+    if (ttl !== 0) {
+      await client.expire(key, ttl);
+    }
+    await client.quit();
+  };
 
 const getKey = async (key) => {
   const client = await getClient();
@@ -36,8 +38,17 @@ const delKey = async (key) => {
   await client.quit();
 };
 
+const getKeys = async (pattern = "*") => {
+  const client = await getClient();
+  await client.connect();
+  const keys = await client.keys(pattern);
+  await client.quit();
+  return keys;
+};
+
 module.exports = {
   setKey,
   getKey,
   delKey,
+  getKeys,
 };
