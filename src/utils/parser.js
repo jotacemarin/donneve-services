@@ -6,6 +6,8 @@ const headers = {
   "Content-Type": "application/json",
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Credentials": true,
+  "Access-Control-Allow-Headers" : "user-id",
+  "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT"
 };
 
 const stringToJSON = (objectString) => {

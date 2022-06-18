@@ -150,7 +150,10 @@
             "http": {
               "path": "/commands",
               "method": "GET",
-              "cors": true
+              "cors": {
+                "origins": "*",
+                "headers": ["Content-Type", "Authorization", "User-Id"]
+              }
             }
           }
         ]
@@ -168,7 +171,10 @@
             "http": {
               "path": "/getCommand/{command}",
               "method": "GET",
-              "cors": true,
+              "cors": {
+                "origins": "*",
+                "headers": ["Content-Type", "Authorization", "User-Id"]
+              },
               "request": {
                 "parameters": {
                   "paths": {
@@ -193,7 +199,10 @@
             "http": {
               "path": "/editCommand/{command}",
               "method": "POST",
-              "cors": true,
+              "cors": {
+                "origins": "*",
+                "headers": ["Content-Type", "Authorization", "User-Id"]
+              },
               "request": {
                 "parameters": {
                   "paths": {
