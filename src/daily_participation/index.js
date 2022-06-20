@@ -4,6 +4,8 @@ const { connect, userModel } = require("../persistence");
 const { publicWebhook } = require("../utils/botnorrea");
 const { createResponse, createErrorResponse } = require("../utils/parser");
 
+const DISABLED = true;
+
 const calculateStars = (total, score) => {
   const percent = (score * 100) / total + 5;
   const frogs = Math.floor(percent / 10);
@@ -49,21 +51,23 @@ const dailyParticipation = async (_event, context, callback) => {
         },
       ])
       .exec();
-    const topFive = await userModel
+    const topFiveMetric = await userModel
       .find($match, { _id: 0, username: 1, score: 1 })
       .sort({ score: -1 })
       .limit(5)
       .exec();
-    const topFiveSanitized = topFive.map(sanitizeObject);
+    const topFiveSanitized = topFiveMetric.map(sanitizeObject);
     const onlyTopFive = topFiveSanitized
       .map(({ score }) => score)
       .reduce((previous, current) => previous + current, 0);
-    const topFiveParticipation = topFiveSanitized
+    const topFive = topFiveSanitized
       .map(calculatePercent(participation, onlyTopFive))
       .map(stringBuilder);
 
-    const message = `Botnorrea top 5 sapometro:\n\n${topFiveParticipation.join("\n")}`;
-    const { status } = await publicWebhook({ message });
+    const message = `Botnorrea top 5 sapometro:\n\n${topFive.join("\n")}`;
+    const { status } = DISABLED
+      ? { status: false }
+      : await publicWebhook({ message });
     return callback(null, createResponse({ message, botnorrea: { status } }));
   } catch (error) {
     const { message } = error;
