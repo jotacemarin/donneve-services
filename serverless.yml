@@ -31,6 +31,11 @@ provider:
     MONGO_USER: ${self:custom.secrets.provider.environment.MONGO_USER}
     MONGO_PASSWORD: ${self:custom.secrets.provider.environment.MONGO_PASSWORD}
     MONGO_DATABASE: ${self:custom.secrets.provider.environment.MONGO_DATABASE}
+    MIX_PANEL_API: ${self:custom.secrets.provider.environment.MIX_PANEL_API}
+    MIX_PANEL_USERNAME: ${self:custom.secrets.provider.environment.MIX_PANEL_USERNAME}
+    MIX_PANEL_USERNAME_SECRET: ${self:custom.secrets.provider.environment.MIX_PANEL_USERNAME_SECRET}
+    MIX_PANEL_PROJECT_ID: ${self:custom.secrets.provider.environment.MIX_PANEL_PROJECT_ID}
+    MIX_PANEL_REPORTS: ${self:custom.secrets.provider.environment.MIX_PANEL_REPORTS}
     MAIN_CHAT: ${self:custom.secrets.provider.environment.MAIN_CHAT}
 
 functions: ${self:custom.secrets.functions}
