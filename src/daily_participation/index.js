@@ -5,8 +5,6 @@ const { publicWebhook } = require("../utils/botnorrea");
 const { getInsights } = require("../utils/mixpanel");
 const { createResponse, createErrorResponse } = require("../utils/parser");
 
-const DISABLED = true;
-
 const sanitizeUser = (element) => {
   const { username, id } = element;
   return { username, id };
@@ -42,6 +40,8 @@ const calculatePercent = (total) => (element) => {
   return { ...element, frogs, percent };
 };
 
+const orderElement = (current, next) => next.percent - current.percent;
+
 const getSumReports = (series, users) => {
   const [messagesKeys, wordsKeys] = Object.keys(series);
 
@@ -54,17 +54,25 @@ const getSumReports = (series, users) => {
   const [{ value: overallMessages }] = messages.splice(messages.length - 1, 1);
   const [{ value: overallWords }] = words.splice(words.length - 1, 1);
 
-  const messagesPercent = messages.map(calculatePercent(overallMessages));
-  const wordsPercent = words.map(calculatePercent(overallWords));
+  const messagesPercent = messages
+    .map(calculatePercent(overallMessages))
+    .sort(orderElement)
+    .slice(0, 5);
+  const wordsPercent = words
+    .map(calculatePercent(overallWords))
+    .sort(orderElement)
+    .slice(0, 5);
 
   return { messages: messagesPercent, words: wordsPercent };
 };
 
 const stringBuilder = (element) => {
   const { username, percent: rawPercent, frogs } = element;
-  const percent = Number(rawPercent).toFixed(0);
+  const percent = `${Number(rawPercent).toFixed(0)}%`;
   const frogMetter = Array.from({ length: frogs }, () => `🐸`).join("");
-  return `@${username}: ${percent}%\n${frogMetter}`;
+  console.log(frogMetter.length);
+  const lineBreak = frogMetter.length > 10 ? "\n" : " ";
+  return `@${username}: ${percent}${lineBreak}${frogMetter} `;
 };
 
 const dailyParticipation = async (_event, context, callback) => {
@@ -86,22 +94,15 @@ const dailyParticipation = async (_event, context, callback) => {
     const stringMessages = messages.map(stringBuilder).join("\n");
     const stringWords = words.map(stringBuilder).join("\n");
 
-    const toMessages = `Botnorrea sapometro by messages:\n\n${stringMessages}`;
-    const toWords = `Botnorrea sapometro by words:\n\n${stringWords}`;
+    const message = `Top 5 sapometro \n\nBy messages: \n\n${stringMessages} \n\nBy words: \n\n${stringWords} `;
 
-    const responses = await Promise.all([
-      publicWebhook({ message: toMessages }),
-      publicWebhook({ message: toWords }),
-    ]);
-    const [{ status: statusMessages }, { status: statusWords }] = responses;
-
-    const completeMessage = `${toMessages}\n\n${toWords}`;
+    const { status } = await publicWebhook({ message });
 
     return callback(
       null,
       createResponse({
-        message: completeMessage,
-        botnorrea: { statusMessages, statusWords },
+        message,
+        botnorrea: { status },
       })
     );
   } catch (error) {
