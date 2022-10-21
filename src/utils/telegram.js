@@ -8,14 +8,14 @@ const CHAT_CREATOR = "creator";
 const CHAT_ADMIN = "administrator";
 const CHAT_MEMBER = "member";
 
-const botnorrea = axios.create({
+const telegram = axios.create({
   baseURL: `https://api.telegram.org/bot${TELEGRAM_TOKEN}`,
   timeout: 5000,
 });
 
 const getChatMember = async (userId) => {
   const params = { user_id: userId, chat_id: MAIN_CHAT };
-  const axiosResponse = await botnorrea.get("/getChatMember", { params });
+  const axiosResponse = await telegram.get("/getChatMember", { params });
   const { data } = axiosResponse;
   const { status, user } = data.result ?? {};
   const { id: id_tg } = user;

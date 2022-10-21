@@ -1,7 +1,7 @@
 # donneve-services
 
 ## nodejs version
-  * 14.16.1
+  * 14.20.0
 
 ## dependencies
   * aws-multipart-parser
@@ -28,16 +28,18 @@
   * `POST` - https://j6a2fj9qc6.execute-api.us-east-2.amazonaws.com/prod/setTags
   * `POST` - https://j6a2fj9qc6.execute-api.us-east-2.amazonaws.com/prod/dailyImage
   * `GET` - https://j6a2fj9qc6.execute-api.us-east-2.amazonaws.com/prod/dailyParticipation
+  * `GET` - https://j6a2fj9qc6.execute-api.us-east-2.amazonaws.com/prod/dailyExchange
+  * `GET` - https://j6a2fj9qc6.execute-api.us-east-2.amazonaws.com/prod/telegramAuth
+  * `GET` - https://j6a2fj9qc6.execute-api.us-east-2.amazonaws.com/prod/commands
+  * `GET` - https://j6a2fj9qc6.execute-api.us-east-2.amazonaws.com/prod/getCommand/{command}
+  * `POST` - https://j6a2fj9qc6.execute-api.us-east-2.amazonaws.com/prod/editCommand/{command}
 ## functions:
   * createCode: createCode
   * uploadMedia: uploadMedia
   * setTags: setTags
+  * dailyImage: dailyImage
+  * dailyParticipation: dailyParticipation
+  * dailyExchange: dailyExchange
+  * telegramAuth: telegramAuth
 ## layers:
   * None
-
-## Stack Outputs
-  * UploadMediaLambdaFunctionQualifiedArn: arn:aws:lambda:us-east-2:776336691876:function:uploadMedia:13
-  * CreateCodeLambdaFunctionQualifiedArn: arn:aws:lambda:us-east-2:776336691876:function:createCode:13
-  * SetTagsLambdaFunctionQualifiedArn: arn:aws:lambda:us-east-2:776336691876:function:setTags:1
-  * ServiceEndpoint: https://j6a2fj9qc6.execute-api.us-east-2.amazonaws.com/prod
-  * ServerlessDeploymentBucketName: donneve-services-prod-serverlessdeploymentbucket-2ol3aivg3wkn

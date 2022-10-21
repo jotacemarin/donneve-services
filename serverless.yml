@@ -36,6 +36,8 @@ provider:
     MIX_PANEL_USERNAME_SECRET: ${self:custom.secrets.provider.environment.MIX_PANEL_USERNAME_SECRET}
     MIX_PANEL_PROJECT_ID: ${self:custom.secrets.provider.environment.MIX_PANEL_PROJECT_ID}
     MIX_PANEL_REPORTS: ${self:custom.secrets.provider.environment.MIX_PANEL_REPORTS}
+    OPENEXCHANGERATES_API: ${self:custom.secrets.provider.environment.OPENEXCHANGERATES_API}
+    OPENEXCHANGERATES_APP_ID: ${self:custom.secrets.provider.environment.OPENEXCHANGERATES_APP_ID}
     MAIN_CHAT: ${self:custom.secrets.provider.environment.MAIN_CHAT}
 
 functions: ${self:custom.secrets.functions}
