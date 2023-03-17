@@ -39,5 +39,6 @@ provider:
     OPENEXCHANGERATES_API: ${self:custom.secrets.provider.environment.OPENEXCHANGERATES_API}
     OPENEXCHANGERATES_APP_ID: ${self:custom.secrets.provider.environment.OPENEXCHANGERATES_APP_ID}
     MAIN_CHAT: ${self:custom.secrets.provider.environment.MAIN_CHAT}
+    COLOMBIA_COM: ${self:custom.secrets.provider.environment.COLOMBIA_COM}
 
 functions: ${self:custom.secrets.functions}

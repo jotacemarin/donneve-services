@@ -1,7 +1,7 @@
 "use strict";
 
 const { createResponse, createErrorResponse } = require("../utils/parser");
-const { getExchanges } = require("../utils/openexchangerates");
+const { getExchanges } = require("../utils/colombiacom");
 const { publicWebhook } = require("../utils/botnorrea");
 
 const dailyExchange = async (_event, context, callback) => {
@@ -10,7 +10,7 @@ const dailyExchange = async (_event, context, callback) => {
   try {
     const exchanges = await getExchanges();
     const exchangesFormated = Object.entries(exchanges)
-      .map(([key, value]) => `${key}: $${Number(value).toFixed(2)}`)
+      .map(([key, value]) => `${key}: ${value}`)
       .join("\n");
     const message = `Botnorrea daily exchanges:\n\n${exchangesFormated}`;
     const { status } = await publicWebhook({ message });
