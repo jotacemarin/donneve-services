@@ -1,12 +1,15 @@
 "use strict";
 
-const { BOTNORREA_API } = process.env;
+const { BOTNORREA_API, BOTNORREA_AUTH_KEY } = process.env;
 
 const axios = require("axios").default;
 
 const botnorrea = axios.create({
   baseURL: BOTNORREA_API,
-  timeout: 5000
+  timeout: 5000,
+  headers: {
+    Authorization: BOTNORREA_AUTH_KEY
+  }
 });
 
 const publicWebhook = async (body) => {
