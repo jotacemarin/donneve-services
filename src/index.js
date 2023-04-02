@@ -10,6 +10,7 @@ const { telegramAuth } = require("./telegram_auth");
 const { commands } = require("./commands");
 const { getCommand } = require("./get_command");
 const { editCommand } = require("./edit_command");
+const { dailyRestoreThrottling } = require("./daily_restore_throttling");
 
 module.exports = {
   createCode,
@@ -22,4 +23,5 @@ module.exports = {
   commands,
   getCommand,
   editCommand,
+  dailyRestoreThrottling,
 };

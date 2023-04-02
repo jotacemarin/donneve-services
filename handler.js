@@ -11,6 +11,7 @@ const {
   commands,
   getCommand,
   editCommand,
+  dailyRestoreThrottling,
 } = require("./src");
 
 module.exports = {
@@ -24,4 +25,5 @@ module.exports = {
   commands,
   getCommand,
   editCommand,
+  dailyRestoreThrottling,
 };
