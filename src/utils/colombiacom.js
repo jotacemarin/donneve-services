@@ -15,22 +15,22 @@ const getExchanges = async () => {
   const {
     window: { document },
   } = new jsDom(data);
-  const exchangesDom = document.querySelectorAll("ul.primera > li");
+  const ratesDom = document.querySelectorAll("ul.primera > li");
 
-  const exchanges = {};
+  const rates = {};
   let lastKey = "";
-  for (let index = 0; index < exchangesDom.length; index++) {
-    const textContent = String(exchangesDom.item(index).textContent)
+  for (let index = 0; index < ratesDom.length; index++) {
+    const textContent = String(ratesDom.item(index).textContent)
       .trim()
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "");
     if (index % 2) {
-      exchanges[lastKey] = textContent;
+      rates[lastKey] = textContent;
     }
     lastKey = textContent;
   }
 
-  return exchanges;
+  return { rates, provider: COLOMBIA_COM };
 };
 
 module.exports = {

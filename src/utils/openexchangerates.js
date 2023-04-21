@@ -13,7 +13,10 @@ const getExchanges = async () => {
   const params = { app_id: OPENEXCHANGERATES_APP_ID };
   const { data } = await openexchangerates.get("/latest.json", { params });
   const { rates: { COP, EUR, GBP } } = data;
-  return { COP, EUR, GBP };
+  return {
+    rates: { COP, EUR, GBP },
+    provider: String(OPENEXCHANGERATES_API).replace("/api", ""),
+  };
 };
 
 module.exports = {

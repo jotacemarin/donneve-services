@@ -7,6 +7,7 @@
     "dailyImage": "sls invoke local -f dailyImage --stage prod",
     "dailyRestoreThrottling": "sls invoke local -f dailyRestoreThrottling --stage prod",
     "dailyParticipation": "sls invoke local -f dailyParticipation --stage prod",
+    "dailyExchange": "sls invoke local -f dailyExchange --stage prod",
     "commands": "sls invoke local -f commands -p mocks/event_commands.json --stage prod",
     "getCommand": "sls invoke local -f getCommand -p mocks/event_get_command.json --stage prod",
     "editCommand": "sls invoke local -f editCommand -p mocks/event_edit_command.json --stage prod"
