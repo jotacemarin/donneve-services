@@ -13,7 +13,7 @@ const dailyExchange = async (_event, context, callback) => {
       .map(([key, value]) => `${key}: ${value}`)
       .join("\n");
     const message = `Botnorrea daily exchange rates:\n\n${ratesFormated}\n\nProvider: ${provider}.`;
-    const { status } = true // await publicWebhook({ message });
+    const { status } = await publicWebhook({ message });
     return callback(null, createResponse({ message, botnorrea: { status } }));
   } catch (error) {
     const { message } = error;
