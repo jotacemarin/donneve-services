@@ -1,7 +1,7 @@
 "use strict";
 
 const { createResponse, createErrorResponse } = require("../utils/parser");
-const { getExchanges } = require("../utils/openexchangerates");
+const { getExchanges } = require("../utils/googlefinance");
 const { publicWebhook } = require("../utils/botnorrea");
 
 const dailyExchange = async (_event, context, callback) => {

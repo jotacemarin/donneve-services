@@ -41,5 +41,6 @@ provider:
     OPENEXCHANGERATES_APP_ID: ${self:custom.secrets.provider.environment.OPENEXCHANGERATES_APP_ID}
     MAIN_CHAT: ${self:custom.secrets.provider.environment.MAIN_CHAT}
     COLOMBIA_COM: ${self:custom.secrets.provider.environment.COLOMBIA_COM}
+    GOOGLE_FINANCE: ${self:custom.secrets.provider.environment.GOOGLE_FINANCE}
 
 functions: ${self:custom.secrets.functions}
