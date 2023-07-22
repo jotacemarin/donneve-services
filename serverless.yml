@@ -42,5 +42,7 @@ provider:
     MAIN_CHAT: ${self:custom.secrets.provider.environment.MAIN_CHAT}
     COLOMBIA_COM: ${self:custom.secrets.provider.environment.COLOMBIA_COM}
     GOOGLE_FINANCE: ${self:custom.secrets.provider.environment.GOOGLE_FINANCE}
+    GOOGLE_FINANCE_USERNAME: ${self:custom.secrets.provider.environment.GOOGLE_FINANCE_USERNAME}
+    GOOGLE_FINANCE_PASSWORD: ${self:custom.secrets.provider.environment.GOOGLE_FINANCE_PASSWORD}
 
 functions: ${self:custom.secrets.functions}

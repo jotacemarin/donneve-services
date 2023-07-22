@@ -1,12 +1,17 @@
 "use strict";
 
-const { GOOGLE_FINANCE } = process.env;
+const { GOOGLE_FINANCE, GOOGLE_FINANCE_USERNAME, GOOGLE_FINANCE_PASSWORD } =
+  process.env;
 
 const axios = require("axios").default;
 
 const openexchangerates = axios.create({
   baseURL: GOOGLE_FINANCE,
   timeout: 5000,
+  auth: {
+    username: GOOGLE_FINANCE_USERNAME,
+    password: GOOGLE_FINANCE_PASSWORD,
+  },
 });
 
 const getExchanges = async () => {
